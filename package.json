@@ -27,7 +27,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
-    "test": "node --test tests/",
+    "test": "node --test",
     "smoke": "electron . --smoke-test",
     "icons": "uv run --with pillow python scripts/make_icons.py",
     "docs": "node scripts/make_docs.js",
