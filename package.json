@@ -1,6 +1,7 @@
 {
   "name": "feather-ai",
   "productName": "Feather AI",
+  "desktopName": "feather-ai",
   "version": "1.0.0",
   "description": "Feather AI - offline cybersecurity and IT repair toolkit for Windows and Linux.",
   "main": "src/main/main.js",
@@ -31,9 +32,9 @@
     "smoke": "electron . --smoke-test",
     "icons": "uv run --with pillow python scripts/make_icons.py",
     "docs": "node scripts/make_docs.js",
-    "dist:linux": "npm run docs && electron-builder --linux AppImage tar.gz --x64",
-    "dist:win": "npm run docs && electron-builder --win portable zip --x64",
-    "dist": "npm run docs && electron-builder --linux AppImage tar.gz --win portable zip --x64",
+    "dist:linux": "npm run docs && electron-builder --publish never --linux AppImage tar.gz --x64",
+    "dist:win": "npm run docs && electron-builder --publish never --win portable zip --x64",
+    "dist": "npm run docs && electron-builder --publish never --linux AppImage tar.gz --win portable zip --x64",
     "usb:linux": "node scripts/make_usb.js linux",
     "usb:win": "node scripts/make_usb.js win",
     "usb": "node scripts/make_usb.js all"
@@ -107,6 +108,7 @@
       ],
       "category": "Utility",
       "icon": "build/icons",
+      "syncDesktopName": true,
       "artifactName": "FeatherAI-${version}-Linux-x64.${ext}",
       "executableName": "feather-ai",
       "synopsis": "Offline cybersecurity and IT repair toolkit"
