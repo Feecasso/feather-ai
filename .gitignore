@@ -1,0 +1,14 @@
+node_modules/
+release/
+usb/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+reports/
+data/
+smoke.png
+npm-debug.log*
+.env
+.venv/
+__pycache__/

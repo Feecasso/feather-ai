@@ -1,0 +1,115 @@
+{
+  "name": "feather-ai",
+  "productName": "Feather AI",
+  "version": "1.0.0",
+  "description": "Feather AI - offline cybersecurity and IT repair toolkit for Windows and Linux.",
+  "main": "src/main/main.js",
+  "author": "Feecasso",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/Feecasso/feather-ai#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Feecasso/feather-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Feecasso/feather-ai/issues"
+  },
+  "keywords": [
+    "cybersecurity",
+    "windows",
+    "linux",
+    "offline",
+    "diagnostics",
+    "repair",
+    "electron"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node --test tests/",
+    "smoke": "electron . --smoke-test",
+    "icons": "uv run --with pillow python scripts/make_icons.py",
+    "docs": "node scripts/make_docs.js",
+    "dist:linux": "npm run docs && electron-builder --linux AppImage tar.gz --x64",
+    "dist:win": "npm run docs && electron-builder --win portable zip --x64",
+    "dist": "npm run docs && electron-builder --linux AppImage tar.gz --win portable zip --x64",
+    "usb:linux": "node scripts/make_usb.js linux",
+    "usb:win": "node scripts/make_usb.js win",
+    "usb": "node scripts/make_usb.js all"
+  },
+  "devDependencies": {
+    "electron": "^45.3.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "org.feecasso.featherai",
+    "productName": "Feather AI",
+    "copyright": "Copyright (c) 2026 Feecasso",
+    "asar": true,
+    "compression": "maximum",
+    "afterPack": "scripts/afterPack.js",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "docs/**/*",
+      "README.md",
+      "LICENSE",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "docs",
+        "to": "docs"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "FeatherAI-${version}-Windows-x64.${ext}",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "portable": {
+      "artifactName": "FeatherAI-${version}-Windows-x64-portable.${ext}",
+      "requestExecutionLevel": "user"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Utility",
+      "icon": "build/icons",
+      "artifactName": "FeatherAI-${version}-Linux-x64.${ext}",
+      "executableName": "feather-ai",
+      "synopsis": "Offline cybersecurity and IT repair toolkit"
+    }
+  }
+}

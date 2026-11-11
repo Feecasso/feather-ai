@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feather AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="window">
+    <div id="titlebar" class="titlebar">
+      <div class="titlebar-left">
+        <img id="title-icon" class="title-icon" src="../../assets/feather-ai-title.png" alt="" width="16" height="16">
+        <span class="titlebar-text">Feather AI</span>
+      </div>
+      <div class="titlebar-buttons">
+        <button id="btn-minimize" class="title-button" type="button" title="Minimize" aria-label="Minimize">_</button>
+        <button id="btn-maximize" class="title-button" type="button" title="Maximize" aria-label="Maximize">&#9633;</button>
+        <button id="btn-close" class="title-button" type="button" title="Close" aria-label="Close">&#215;</button>
+      </div>
+    </div>
+
+    <div id="menubar" class="menubar" role="menubar" aria-label="Application menu"></div>
+
+    <div class="infostrip" aria-label="System information">
+      <div class="info-cell">
+        <span class="info-label">Computer</span>
+        <span id="info-computer" class="info-value">Loading...</span>
+      </div>
+      <div class="info-cell">
+        <span id="info-os-label" class="info-label">Windows version</span>
+        <span id="info-os" class="info-value">Loading...</span>
+      </div>
+      <div class="info-cell">
+        <span class="info-label">Administrator</span>
+        <span id="info-admin" class="info-value">Checking...</span>
+      </div>
+      <div class="info-cell">
+        <span class="info-label">Connectivity</span>
+        <span id="info-offline" class="info-value">Offline — local only</span>
+      </div>
+    </div>
+
+    <div class="main-body">
+      <nav id="nav" class="nav" aria-label="Tools">
+        <button class="nav-button" type="button" data-tool="system">
+          <span class="nav-icon" data-icon="system"></span>
+          <span class="nav-label">System Check</span>
+        </button>
+        <button class="nav-button" type="button" data-tool="security">
+          <span class="nav-icon" data-icon="security"></span>
+          <span class="nav-label">Security Scan</span>
+        </button>
+        <button class="nav-button" type="button" data-tool="repair">
+          <span class="nav-icon" data-icon="repair"></span>
+          <span class="nav-label">Repair Tools</span>
+        </button>
+        <button class="nav-button" type="button" data-tool="reports">
+          <span class="nav-icon" data-icon="reports"></span>
+          <span class="nav-label">Reports</span>
+        </button>
+        <div class="nav-divider" role="separator"></div>
+        <div class="nav-note">
+          <strong>Offline by design.</strong><br>
+          Checks read local information. Repairs run only after your approval.
+        </div>
+      </nav>
+
+      <main id="workspace" class="workspace">
+        <div class="workspace-heading">
+          <div>
+            <h1 id="tool-title">System Check</h1>
+            <p id="tool-intro" class="tool-intro"></p>
+          </div>
+          <div id="heading-actions" class="heading-actions"></div>
+        </div>
+
+        <div id="tool-content" class="tool-content"></div>
+
+        <div class="action-row">
+          <button id="btn-start" class="button" type="button">Start Check</button>
+          <button id="btn-cancel" class="button" type="button" disabled>Cancel</button>
+          <button id="btn-save" class="button" type="button" disabled>Save Report</button>
+          <span class="action-spacer"></span>
+          <span id="action-note" class="action-note"></span>
+        </div>
+
+        <div id="progress-area" class="progress-panel">
+          <div class="progress-caption">
+            <span id="progress-text">Ready. Choose a check to begin.</span>
+            <span id="progress-percent" class="progress-percent"></span>
+          </div>
+          <div id="progress-bar" class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Check progress"></div>
+        </div>
+
+        <div id="results-wrap" class="results-wrap">
+          <div class="panel-caption">
+            <span id="results-title">Results</span>
+            <span id="results-summary" class="results-summary">No results</span>
+          </div>
+          <div class="results-head" role="row">
+            <span role="columnheader">Check</span>
+            <span role="columnheader">Status</span>
+            <span role="columnheader">Finding</span>
+          </div>
+          <div id="results-scroll" class="results-scroll" role="rowgroup">
+            <div id="results-empty" class="results-empty">No results yet. Ready. Choose a check to begin.</div>
+            <div id="results-list"></div>
+          </div>
+          <div id="detail-pane" class="detail-pane">
+            <div class="detail-empty">Select a result to see its evidence, explanation, and suggested next step.</div>
+            <div id="detail-content" class="detail-content" hidden></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="statusbar" aria-label="Status bar">
+      <div id="status-main" class="status-cell status-main">Ready</div>
+      <div id="status-report" class="status-cell status-report" title="Report location">Report: not saved</div>
+      <div id="status-version" class="status-cell status-version">Feather AI</div>
+    </div>
+  </div>
+
+  <div class="resize-handle resize-n" data-resize="n"></div>
+  <div class="resize-handle resize-s" data-resize="s"></div>
+  <div class="resize-handle resize-e" data-resize="e"></div>
+  <div class="resize-handle resize-w" data-resize="w"></div>
+  <div class="resize-handle resize-ne" data-resize="ne"></div>
+  <div class="resize-handle resize-nw" data-resize="nw"></div>
+  <div class="resize-handle resize-se" data-resize="se"></div>
+  <div class="resize-handle resize-sw" data-resize="sw"></div>
+
+  <div id="modal-backdrop" class="modal-backdrop" hidden>
+    <div id="modal" class="modal window" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="titlebar modal-titlebar">
+        <span id="modal-title" class="titlebar-text">Feather AI</span>
+        <div class="titlebar-buttons">
+          <button id="modal-close" class="title-button" type="button" aria-label="Close dialog">&#215;</button>
+        </div>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div id="modal-footer" class="modal-footer"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
