@@ -23,9 +23,11 @@ so no build tools are needed on the computer that uses Feather AI.
 
 ### Windows 10 and 11 (x64)
 
-1. Copy the `FeatherAI-Windows-x64` folder (or the portable `.exe`) to the USB
-   drive.
-2. Double-click **`Feather AI.exe`**. The feather "F" icon marks the file.
+1. Download `FeatherAI-1.0.0-Windows-x64.zip` and extract it into a folder on
+   the USB drive (for example `FeatherAI-Windows-x64`), or copy the portable
+   `.exe` directly to the drive.
+2. In the folder, double-click **`Feather AI.exe`**. The feather "F" icon marks
+   the file.
 3. Windows may show a SmartScreen notice for an unsigned build. Choose
    **More info → Run anyway** only if you trust the copy you are running.
 
