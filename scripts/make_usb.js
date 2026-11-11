@@ -141,4 +141,9 @@ if (!['win', 'windows', 'linux', 'all'].includes(which)) {
   console.error('Usage: node scripts/make_usb.js [win|linux|all]');
   process.exit(2);
 }
+// Keep the drive root self-describing: a visible README, the license, the full
+// documentation, and a reports folder next to the platform folders.
+fs.mkdirSync(usbRoot, { recursive: true });
+commonFiles(usbRoot);
+log('added README.txt, LICENSE.txt, docs/, and reports/ to the USB root');
 process.exit(ok ? 0 : 1);

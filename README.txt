@@ -5,7 +5,8 @@ Offline cybersecurity and IT repair toolkit for Windows and Linux.
 
 QUICK START (Windows 10/11, 64-bit)
 -----------------------------------
-Double-click:  Feather AI.exe
+Double-click "Feather AI (portable).exe" in this folder, or open the
+FeatherAI-Windows-x64 folder and double-click "Feather AI.exe".
 
 No installation, no internet connection, and no Python or Node.js are required.
 Windows may show a SmartScreen notice because this build is not code-signed.

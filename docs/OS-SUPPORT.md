@@ -88,20 +88,24 @@ shipped by GNOME/KDE).
 ```text
 USB drive/
 ├── Feather AI (portable).exe        single-file Windows build
+├── Feather AI 1.0.0.AppImage        optional Linux build
+├── README.txt                       start here
+├── LICENSE.txt
+├── docs/                            checks, repairs, OS support
+├── reports/                         created on first use
 ├── FeatherAI-Windows-x64/
 │   ├── Feather AI.exe               visible application executable
 │   ├── README.txt
 │   ├── LICENSE.txt
 │   ├── docs/
-│   └── reports/                     created on first use
-├── Feather AI 1.0.0.AppImage        optional Linux build
+│   └── reports/
 └── FeatherAI-Linux-x64/
     ├── Feather AI
     ├── feather-ai
     ├── README.txt
     ├── LICENSE.txt
     ├── docs/
-    └── reports/                     created on first use
+    └── reports/
 ```
 
 `npm run usb` stages these folders locally from the packaged builds. The same
